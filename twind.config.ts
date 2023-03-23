@@ -36,12 +36,13 @@ const options: Omit<Options, "selfURL"> = {
       colors: {
         "default": "#FFFFFF",
         "header": "#FFFFFF",
-        "badge": "#8C3D3D", // shopping cart tem isso tambem
-        "footer": "#003232",
-        "interactive": "#161616",
+        "badge": "#f49d37", // shopping cart tem isso tambem
+        "footer": "#363636",
+        "interactive": "#fff",
         "interactive-inverse": "#FFFFFF",
-        "hover": "rgba(0, 0, 0, 0.04)",
+        "hover": "#8a4f7d",
         "hover-inverse": "rgba(255, 255, 255, 0.4)",
+        "submenu": "#FFFFFF",
       },
       textColor: {
         "default": "#161616",
@@ -52,6 +53,7 @@ const options: Omit<Options, "selfURL"> = {
         "section-title": "#161616",
         "positive": "#1A7346",
         "critical": "#B44125",
+        "submenu": "#FFFFFF",
       },
       borderColor: {
         "default": "#D4DBD7",
@@ -68,16 +70,21 @@ const options: Omit<Options, "selfURL"> = {
         "heading-1": ["56px", "67.2px"],
         "heading-2": ["24px", "28.8px"],
         "heading-3": ["20px", "24px"],
+        "heading-3-bold": ["20px", "24px"],
+        "featured-text": ["20px", "24px"],
         "menu": ["16px", "20px"],
+        "submenu": ["14px", "20px"],
         "button": ["14px", "18px"],
         "body": ["16px", "20px"],
-        "caption": ["13px", "16px"],
+        "caption": ["16px", "16px"],
         "list-price": ["10px", "20px"],
       },
       fontWeight: {
         "heading-1": "500",
         "heading-2": "500",
         "heading-3": "500",
+        "heading-3-bold": "900",
+        "featured-text": "400",
         "menu": "400",
         "button": "700",
         "body": "400",
@@ -111,8 +118,9 @@ const options: Omit<Options, "selfURL"> = {
       },
     },
     fontFamily: {
-      sans: ["Albert Sans", "sans-serif"],
+      sans: ["Noto Sans", "sans-serif"],
       serif: ["inherit", "serif"],
+      title: ["Roboto", "sans-serif"],
     },
     screens: {
       sm: "640px",
@@ -170,12 +178,24 @@ const options: Omit<Options, "selfURL"> = {
       "scroll-behavior": "smooth",
       "-webkit-overflow-scrolling": "touch",
     },
+    "container": {
+      "margin-left": "auto;",
+      "margin-right": " auto;",
+      "max-width": "calc(1368px + 10%);",
+      "padding-left": "5%;",
+      "padding-right": "5%;",
+      "width": "100%;",
+    },
     "scrollbar-none": {
       "scrollbar-width": "none",
       "-ms-overflow-style": "none",
       "&::-webkit-scrollbar": {
         display: "none",
       },
+    },
+    "scale-blur-image": {
+      "filter": "blur(3px)",
+      "transform": "scale(1.5)",
     },
   },
 };

@@ -6,7 +6,11 @@ export interface Feature {
   /**
    * @description Image src
    */
-  icon: AvailableIcons;
+  icon: {
+    name: AvailableIcons;
+    width: number;
+    height: number;
+  };
   /**
    * @description Title
    */
@@ -25,20 +29,21 @@ function FeatureHighlights(
   { features }: Props,
 ) {
   return (
-    <Container class="min-h-[280px] p-6 sm:px-0 sm:py-10">
-      <div class="border-default border-1">
-        <div class="flex flex-col justify-evenly sm:flex-row divide-y-1 sm:divide-y-0 sm:divide-x-1 divide-default mx-6 sm:mx-0 sm:my-10">
-          {features.map(({ icon: id = "Truck", title, description }) => (
-            <div class="flex flex-row sm:flex-col gap-4 py-6 sm:py-0 sm:px-10">
+    <div class="w-full max-w-full bg-footer">
+    <Container class="h-[196px] p-6 sm:px-0 sm:py-10 flex items-center">
+      <div class="">
+        <div class="flex flex-col items-center justify-between sm:flex-row">
+          {features.map(({ icon, title, description }) => (
+            <div class="flex flex-row items-center gap-4">
               <Icon
-                id={id}
-                width={40}
-                height={40}
+                id={icon?.name}
+                width={icon?.width}
+                height={icon?.height}
                 strokeWidth={2}
               />
               <div class="flex flex-col gap-2">
-                <Text variant="heading-3">{title}</Text>
-                <Text tone="subdued" variant="caption">
+                <Text class="max-w-[80%] text-[16px] text-white font-semibold">{title}</Text>
+                <Text class="max-w-[80%] text-[19px] text-white font-normal">
                   {description}
                 </Text>
               </div>
@@ -47,6 +52,7 @@ function FeatureHighlights(
         </div>
       </div>
     </Container>
+    </div>
   );
 }
 

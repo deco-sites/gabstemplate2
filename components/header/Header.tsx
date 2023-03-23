@@ -31,11 +31,16 @@ export interface Props {
   /** @title Search Bar */
   searchbar?: SearchbarProps;
   /**
-   * @title Navigation items
+   * @title Navigation items at Left Side
    * @description Navigation items used both on mobile and desktop menus
    */
-  navItems?: NavItem[];
+  navItemsLeft?: NavItem[];
 
+  /**
+   * @title Navigation items at Right Side
+   * @description Navigation items used both on mobile and desktop menus
+   */
+  navItemsRight?: NavItem[];
   /**
    * @title Product suggestions
    * @description Product suggestions displayed on search
@@ -58,21 +63,22 @@ function Header(
     alerts,
     searchbar: _searchbar,
     products,
-    navItems = [],
+    navItemsLeft = [],
+    navItemsRight =[],
     suggestions,
     configVTEX,
   }: Props,
 ) {
   const searchbar = { ..._searchbar, products, suggestions, configVTEX };
   return (
-    <header class={`h-[${headerHeight}]`}>
-      <div class="bg-default fixed w-full z-50">
+    <header>
+      <div class="bg-transparent fixed w-full z-50">
         <Alert alerts={alerts} />
-        <Navbar items={navItems} searchbar={searchbar} />
+        <Navbar itemsLeft={navItemsLeft} itemsRight={navItemsRight} searchbar={searchbar} />
       </div>
 
       <Modals
-        menu={{ items: navItems }}
+        menu={{ items: [...navItemsLeft, ...navItemsRight] }}
         searchbar={searchbar}
       />
     </header>

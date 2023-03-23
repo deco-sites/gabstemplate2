@@ -8,8 +8,9 @@ import type { INavItem } from "./NavItem.tsx";
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import HeaderSearchMenu from "$store/islands/HeaderSearchMenu.tsx";
 
-function Navbar({ items, searchbar }: {
-  items: INavItem[];
+function Navbar({ itemsLeft, itemsRight, searchbar }: {
+  itemsLeft: INavItem[];
+  itemsRight: INavItem[];
   searchbar: SearchbarProps;
 }) {
   return (
@@ -35,21 +36,33 @@ function Navbar({ items, searchbar }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden md:flex flex-row justify-between items-center border-b-1 border-default w-full pl-2 pr-3">
-        <div class="flex-none w-44">
-          <a href="/" aria-label="Store logo" class="block px-4 py-3 w-[160px]">
-            <Icon id="Logo" width={126} height={16} />
-          </a>
+      <div class="hidden md:flex flex-row justify-between items-center w-full h-[72px] container bg-transparent">
+        <div class="w-[20%] block">
         </div>
-        <div class="flex-auto flex justify-center">
-          {items.map((item) => <NavItem item={item} />)}
+
+        <div class="w-[60%] flex justify-center items-center h-full">
+          <div class="flex-auto flex justify-center h-full">
+            {itemsLeft.map((item) => <NavItem item={item} />)}
+          </div>
+          <div class="flex-none">
+            <a
+              href="/"
+              aria-label="Store logo"
+              class="block"
+            >
+              <Icon id="Logo" width={180} height={60} />
+            </a>
+          </div>
+          <div class="flex-auto flex justify-center">
+            {itemsRight.map((item) => <NavItem item={item} />)}
+          </div>
         </div>
-        <div class="flex-none w-44 flex items-center justify-end gap-2">
+        <div class="w-[20%] flex items-center justify-end gap-2">
           <HeaderButton variant="search" />
           <HeaderSearchMenu searchbar={searchbar} />
           <Button
             as="a"
-            variant="icon"
+            variant="none"
             href="/login"
             aria-label="Log in"
           >

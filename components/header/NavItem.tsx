@@ -13,10 +13,10 @@ function NavItem({ item }: { item: INavItem }) {
   const { href, label, children, image } = item;
 
   return (
-    <li class="group flex items-center">
-      <a href={href} class="px-4 py-3">
+    <li class="group flex items-center mx-9 relative h-full">
+      <a href={href} class="px-1.5">
         <Text
-          class="group-hover:border-black border-solid border-b border-white"
+          class=""
           variant="menu"
         >
           {label}
@@ -26,12 +26,11 @@ function NavItem({ item }: { item: INavItem }) {
       {children && children.length > 0 &&
         (
           <div
-            class={`fixed invisible hover:visible group-hover:visible bg-default z-50 flex items-start justify-center gap-6 border-t-1 border-b-2 border-default w-screen mt-[${headerHeight}]`}
-            style={{ top: "0px", left: "0px" }}
+            class={`absolute invisible hover:visible group-hover:visible bg-footer z-50 flex items-start justify-center gap-6 border-default w-auto top-[90%] shadow-md left-[50%] translate-x-[-50%]`}
           >
             {image?.src && (
               <Image
-                class="p-6"
+                class=""
                 src={image.src}
                 alt={image.alt}
                 width={300}
@@ -39,18 +38,18 @@ function NavItem({ item }: { item: INavItem }) {
                 loading="lazy"
               />
             )}
-            <ul class="flex items-start justify-center gap-6">
+            <ul class="flex flex-col items-start justify-center gap-0 w-max py-2.5 px-7">
               {children.map((node) => (
-                <li class="p-6">
-                  <a class="hover:underline" href={node.href}>
-                    <Text variant="menu">{node.label}</Text>
+                <li class="py-1 px-5">
+                  <a class="text-white" href={node.href}>
+                    <Text variant="submenu" tone="submenu">{node.label}</Text>
                   </a>
 
-                  <ul class="flex flex-col gap-1 mt-4">
+                  <ul class="flex flex-col gap-1">
                     {node.children?.map((leaf) => (
                       <li>
-                        <a class="hover:underline" href={leaf.href}>
-                          <Text variant="caption">{leaf.label}</Text>
+                        <a class="text-white" href={leaf.href}>
+                          <Text variant="submenu" tone="submenu">{leaf.label}</Text>
                         </a>
                       </li>
                     ))}

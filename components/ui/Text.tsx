@@ -10,12 +10,16 @@ type Props = JSX.IntrinsicElements["span"] & {
     | "price"
     | "section-title"
     | "positive"
-    | "critical";
+    | "critical"
+    | "submenu";
   variant?:
     | "heading-1"
     | "heading-2"
     | "heading-3"
+    | "heading-3-bold"
+    | "featured-text"
     | "menu"
+    | "submenu"
     | "button"
     | "body"
     | "caption"
@@ -29,7 +33,7 @@ const Text = forwardRef<HTMLSpanElement, Props>((
   return (
     <span
       {...props}
-      class={`font-${variant} text-${variant} text-${tone} ${_class}`}
+      class={`${variant && `font-${variant} text-${variant}`} ${tone && `text-${tone}`} ${_class}`}
       ref={ref}
     />
   );
