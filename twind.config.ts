@@ -49,7 +49,7 @@ const options: Omit<Options, "selfURL"> = {
         "default-inverse": "#FFFFFF",
         "subdued": "#66736C",
         "subdued-inverse": "#C6C6C6",
-        "price": "#8C3D3D",
+        "price": "#000000",
         "section-title": "#161616",
         "positive": "#1A7346",
         "critical": "#B44125",

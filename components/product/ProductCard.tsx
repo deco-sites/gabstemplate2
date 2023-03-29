@@ -48,6 +48,7 @@ function ProductCard({ product, preload }: Props) {
     image: images,
     offers,
   } = product;
+  console.log('Offers', { offers })
   const [front, back] = images ?? [];
   const { listPrice, price, seller } = useOffer(offers);
 
@@ -62,8 +63,8 @@ function ProductCard({ product, preload }: Props) {
           <Image
             src={front.url!}
             alt={front.alternateName}
-            width={200}
-            height={279}
+            width={322}
+            height={322}
             class="rounded w-full group-hover:hidden"
             preload={preload}
             loading={preload ? "eager" : "lazy"}
@@ -72,8 +73,8 @@ function ProductCard({ product, preload }: Props) {
           <Image
             src={back?.url ?? front.url!}
             alt={back?.alternateName ?? front.alternateName}
-            width={200}
-            height={279}
+            width={322}
+            height={322}
             class="rounded w-full hidden group-hover:block"
             sizes="(max-width: 640px) 50vw, 20vw"
           />
@@ -85,31 +86,34 @@ function ProductCard({ product, preload }: Props) {
                 backdropFilter: "blur(2px)",
               }}
             >
-              <Sizes {...product} />
-              <Button as="a" href={product.url}>Visualizar Produto</Button>
+              {/* <Sizes {...product} /> */}
             </div>
           )}
         </div>
 
         <div class="flex flex-col gap-1 py-2">
           <Text
-            class="overflow-hidden overflow-ellipsis whitespace-nowrap"
+            class="overflow-hidden overflow-ellipsis whitespace-nowrap text-[19px] font-bold text-uppercase mb-8 "
             variant="caption"
           >
             {name}
           </Text>
-          <div class="flex items-center gap-2">
+          <div class="flex flex-col items-start gap-2 mb-8">
             <Text
-              class="line-through"
+              class="line-through text-[14px]"
               variant="list-price"
               tone="subdued"
             >
               {formatPrice(listPrice, offers!.priceCurrency!)}
             </Text>
-            <Text variant="caption" tone="price">
+            <Text variant="caption" tone="price" class="text-[19px] text-black font-black">
               {formatPrice(price, offers!.priceCurrency!)}
             </Text>
+            <Text variant="caption" tone="price" class="text-[16px] text-black">
+              1x de {formatPrice(price, offers!.priceCurrency!)} sem juros
+            </Text>
           </div>
+            <Button variant="none" as="a" href={product.url} class="block w-full border-1 border-solid border-[#8A4F7D] block text-center py-3 text-[16px] text-[#8A4F7D] hover:bg-[#8A4F7D] hover:text-white">COMPRAR</Button>
         </div>
       </a>
     </div>
